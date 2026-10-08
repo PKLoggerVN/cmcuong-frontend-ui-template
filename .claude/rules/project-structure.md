@@ -35,17 +35,17 @@
 
 ## Where to Put New Files
 
-| What | Where |
-|---|---|
-| New page | `src/app/<route>/page.tsx` |
-| New API endpoint | `src/app/api/<resource>/route.ts` |
-| Reusable component | `src/components/<FeatureName>/` |
-| Page-specific component | Co-locate in `src/app/<route>/` |
-| Custom hook | `src/hooks/use<Name>.ts` |
-| New MobX store | `src/stores/<Name>Store.ts` + register in `RootStore.ts` |
-| Shared types | `src/types/<domain>.ts` |
-| Constants/enums | `src/contains/<name>.ts` |
-| Theme/Snippet | `src/components/ui/` |
+| What                    | Where                                                    |
+| ----------------------- | -------------------------------------------------------- |
+| New page                | `src/app/<route>/page.tsx`                               |
+| New API endpoint        | `src/app/api/<resource>/route.ts`                        |
+| Reusable component      | `src/components/<FeatureName>/`                          |
+| Page-specific component | Co-locate in `src/app/<route>/`                          |
+| Custom hook             | `src/hooks/use<Name>.ts`                                 |
+| New MobX store          | `src/stores/<Name>Store.ts` + register in `RootStore.ts` |
+| Shared types            | `src/types/<domain>.ts`                                  |
+| Constants/enums         | `src/contains/<name>.ts`                                 |
+| Theme/Snippet           | `src/components/ui/`                                     |
 
 ## Component File Structure
 

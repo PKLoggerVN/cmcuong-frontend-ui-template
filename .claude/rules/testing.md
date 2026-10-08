@@ -22,9 +22,9 @@
 
 ```tsx
 // Good
-const button = screen.getByRole('button', { name: /submit/i });
-await userEvent.click(button);
-expect(screen.getByText('Success')).toBeInTheDocument();
+const button = screen.getByRole('button', { name: /submit/i })
+await userEvent.click(button)
+expect(screen.getByText('Success')).toBeInTheDocument()
 ```
 
 ## MobX Store Tests
@@ -34,10 +34,10 @@ expect(screen.getByText('Success')).toBeInTheDocument();
 
 ```ts
 it('should toggle theme', () => {
-  const store = new GlobalStore();
-  store.toggleTheme();
-  expect(store.theme).toBe('dark');
-});
+  const store = new GlobalStore()
+  store.toggleTheme()
+  expect(store.theme).toBe('dark')
+})
 ```
 
 ## What NOT to Test

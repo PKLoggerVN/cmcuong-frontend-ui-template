@@ -6,16 +6,16 @@
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | Next.js 16.2.5 (App Router, Turbopack) |
-| Language | TypeScript 5, React 19.2.6 |
-| UI | Chakra UI v3 (@chakra-ui/react) + next-themes |
-| State | MobX 6 + mobx-react-lite + mobx-persist |
-| Data Fetching | TanStack React Query v5 |
-| Linting | ESLint 9 (Flat Config) |
-| Formatting | Prettier |
-| Git Hooks | Husky + lint-staged |
+| Layer         | Technology                                    |
+| ------------- | --------------------------------------------- |
+| Framework     | Next.js 16.2.5 (App Router, Turbopack)        |
+| Language      | TypeScript 5, React 19.2.6                    |
+| UI            | Chakra UI v3 (@chakra-ui/react) + next-themes |
+| State         | MobX 6 + mobx-react-lite + mobx-persist       |
+| Data Fetching | TanStack React Query v5                       |
+| Linting       | ESLint 9 (Flat Config)                        |
+| Formatting    | Prettier                                      |
+| Git Hooks     | Husky + lint-staged                           |
 
 ## Project Structure
 
@@ -50,6 +50,7 @@ yarn type-check   # TypeScript check (no emit)
 ## Rules
 
 All project rules are in `.claude/rules/`. Always apply:
+
 - `code-style.md` — TypeScript/React patterns
 - `project-structure.md` — Where files go
 - `git-workflow.md` — Commit and branch conventions

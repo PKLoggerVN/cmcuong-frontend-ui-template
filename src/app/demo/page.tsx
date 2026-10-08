@@ -10,7 +10,7 @@ import GlobalStore from '@/stores/global.store'
 import { ColorModeButton } from '@/components/ui/color-mode'
 
 interface HomeProps {
-  globalStore: GlobalStore
+  globalStore?: GlobalStore
 }
 
 const Home: React.FC<HomeProps> = () => {
@@ -48,16 +48,12 @@ const Home: React.FC<HomeProps> = () => {
         <Heading as="h1" size="xl" mb={2}>
           Chakra UI - Next.js example in TypeScript
         </Heading>
-        <Text mb={2}>
-          Chakra UI - Next.js example in TypeScript
-        </Text>
+        <Text mb={2}>Chakra UI - Next.js example in TypeScript</Text>
         <Text fontSize="sm" mb={2}>
           Chakra UI - Next.js example in TypeScript
         </Text>
         <Link asChild color="teal.500">
-          <NextLink href="/">
-            Go to the home page
-          </NextLink>
+          <NextLink href="/">Go to the home page</NextLink>
         </Link>
 
         <ProTip />

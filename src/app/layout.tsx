@@ -62,14 +62,8 @@ export default function RootLayout({
       </head>
       <body className={outfit.variable}>
         <AppProviders>
-          <Box
-            minH="100vh"
-            display="flex"
-            flexDirection="column"
-          >
-            <main style={{ flex: 1 }}>
-              {children}
-            </main>
+          <Box minH="100vh" display="flex" flexDirection="column">
+            <main style={{ flex: 1 }}>{children}</main>
           </Box>
         </AppProviders>
       </body>

@@ -9,7 +9,7 @@
 ```ts
 // Good
 export async function GET(request: Request) {
-  return NextResponse.json({ data }, { status: 200 });
+  return NextResponse.json({ data }, { status: 200 })
 }
 ```
 
@@ -23,7 +23,7 @@ export async function GET(request: Request) {
 const { data, isLoading } = useQuery({
   queryKey: ['user', id],
   queryFn: () => fetchUser(id),
-});
+})
 ```
 
 ## Error Handling
@@ -33,13 +33,13 @@ const { data, isLoading } = useQuery({
 
 ## HTTP Status Codes
 
-| Situation | Code |
-|---|---|
-| Success (with data) | 200 |
-| Created | 201 |
-| No content | 204 |
-| Bad request | 400 |
-| Unauthorized | 401 |
-| Forbidden | 403 |
-| Not found | 404 |
-| Server error | 500 |
+| Situation           | Code |
+| ------------------- | ---- |
+| Success (with data) | 200  |
+| Created             | 201  |
+| No content          | 204  |
+| Bad request         | 400  |
+| Unauthorized        | 401  |
+| Forbidden           | 403  |
+| Not found           | 404  |
+| Server error        | 500  |

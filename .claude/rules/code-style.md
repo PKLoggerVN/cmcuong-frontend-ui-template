@@ -16,11 +16,11 @@
 
 ```tsx
 // Good
-import { Stack } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react'
 
 interface UserCardProps {
-  name: string;
-  avatarUrl?: string;
+  name: string
+  avatarUrl?: string
 }
 
 export function UserCard({ name, avatarUrl }: UserCardProps) {
@@ -28,7 +28,7 @@ export function UserCard({ name, avatarUrl }: UserCardProps) {
     <Stack direction="row" gap={2} p={2} alignItems="center">
       {name}
     </Stack>
-  );
+  )
 }
 ```
 
@@ -50,13 +50,13 @@ Prettier and ESLint handle enforcement automatically.
 
 ## Naming Conventions
 
-| Entity | Convention | Example |
-|---|---|---|
-| Component | PascalCase | `UserProfile` |
-| Hook | camelCase + `use` prefix | `useThemeToggle` |
-| Store | PascalCase + `Store` | `GlobalStore` |
-| Constant | SCREAMING_SNAKE_CASE | `MAX_RETRY_COUNT` |
-| File | kebab-case or PascalCase | `user-card.tsx` or `UserCard.tsx` |
+| Entity    | Convention               | Example                           |
+| --------- | ------------------------ | --------------------------------- |
+| Component | PascalCase               | `UserProfile`                     |
+| Hook      | camelCase + `use` prefix | `useThemeToggle`                  |
+| Store     | PascalCase + `Store`     | `GlobalStore`                     |
+| Constant  | SCREAMING_SNAKE_CASE     | `MAX_RETRY_COUNT`                 |
+| File      | kebab-case or PascalCase | `user-card.tsx` or `UserCard.tsx` |
 
 ## Formatting
 

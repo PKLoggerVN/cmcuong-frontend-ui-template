@@ -4,18 +4,18 @@ A production-ready Next.js 16 starter template with Material UI v7, MobX 6, and 
 
 ## Tech Stack
 
-| Layer | Technology | Version |
-|---|---|---|
-| Framework | Next.js (App Router, Turbopack) | 16.1.2 |
-| Language | TypeScript | 5 |
-| UI Library | Material UI | v7 |
-| State Management | MobX + mobx-react-lite | 6 |
-| Data Fetching | TanStack React Query | v5 |
-| Font | Outfit (Google Fonts via `next/font`) | — |
-| Linting | ESLint 9 (Flat Config) | 9 |
-| Formatting | Prettier | 3 |
-| Git Hooks | Husky + lint-staged | — |
-| SEO | next-sitemap | 4 |
+| Layer            | Technology                            | Version |
+| ---------------- | ------------------------------------- | ------- |
+| Framework        | Next.js (App Router, Turbopack)       | 16.1.2  |
+| Language         | TypeScript                            | 5       |
+| UI Library       | Material UI                           | v7      |
+| State Management | MobX + mobx-react-lite                | 6       |
+| Data Fetching    | TanStack React Query                  | v5      |
+| Font             | Outfit (Google Fonts via `next/font`) | —       |
+| Linting          | ESLint 9 (Flat Config)                | 9       |
+| Formatting       | Prettier                              | 3       |
+| Git Hooks        | Husky + lint-staged                   | —       |
+| SEO              | next-sitemap                          | 4       |
 
 ## Features
 
@@ -68,22 +68,22 @@ QueryClientProvider
 
 Custom breakpoints (matches common device widths):
 
-| Token | Value |
-|---|---|
-| `xs` | 0px |
-| `sm` | 576px |
-| `md` | 768px |
-| `lg` | 992px |
-| `xl` | 1200px |
+| Token | Value  |
+| ----- | ------ |
+| `xs`  | 0px    |
+| `sm`  | 576px  |
+| `md`  | 768px  |
+| `lg`  | 992px  |
+| `xl`  | 1200px |
 
 Custom layout tokens (responsive via CSS vars):
 
-| Token | Mobile | Desktop (≥768px) |
-|---|---|---|
-| `--screen-padding` | 16px | 160px |
-| `--grid-gap-tight` | 8px | 20px |
-| `--grid-gap-default` | 16px | 40px |
-| `--grid-gap-loose` | 24px | 80px |
+| Token                | Mobile | Desktop (≥768px) |
+| -------------------- | ------ | ---------------- |
+| `--screen-padding`   | 16px   | 160px            |
+| `--grid-gap-tight`   | 8px    | 20px             |
+| `--grid-gap-default` | 16px   | 40px             |
+| `--grid-gap-loose`   | 24px   | 80px             |
 
 ## Getting Started
 
@@ -110,10 +110,10 @@ yarn type-check   # TypeScript check (no emit)
 
 ## Git Hooks (Husky)
 
-| Hook | Action |
-|---|---|
+| Hook         | Action                                                             |
+| ------------ | ------------------------------------------------------------------ |
 | `pre-commit` | `lint-staged` → `yarn lint` + `yarn format` on staged `*.ts/*.tsx` |
-| `pre-push` | `yarn type-check` |
+| `pre-push`   | `yarn type-check`                                                  |
 
 ## Adding a New MobX Store
 

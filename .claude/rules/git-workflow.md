@@ -21,16 +21,16 @@ docs/<short-description>       # Documentation only
 
 ### Types
 
-| Type | When to use |
-|---|---|
-| `feat` | New feature |
-| `fix` | Bug fix |
-| `chore` | Build, tooling, deps |
+| Type       | When to use                         |
+| ---------- | ----------------------------------- |
+| `feat`     | New feature                         |
+| `fix`      | Bug fix                             |
+| `chore`    | Build, tooling, deps                |
 | `refactor` | Code change without behavior change |
-| `style` | Formatting only |
-| `test` | Adding or fixing tests |
-| `docs` | Documentation |
-| `perf` | Performance improvement |
+| `style`    | Formatting only                     |
+| `test`     | Adding or fixing tests              |
+| `docs`     | Documentation                       |
+| `perf`     | Performance improvement             |
 
 ### Examples
 

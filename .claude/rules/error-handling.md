@@ -13,15 +13,21 @@
 
 ```tsx
 // src/app/error.tsx
-'use client';
+'use client'
 
-export default function Error({ error, reset }: { error: Error; reset: () => void }) {
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error
+  reset: () => void
+}) {
   return (
     <Box>
       <Typography>Something went wrong: {error.message}</Typography>
       <Button onClick={reset}>Try again</Button>
     </Box>
-  );
+  )
 }
 ```
 
@@ -32,13 +38,13 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 
 ```ts
 // Bad
-fetchData(); // floating promise
+fetchData() // floating promise
 
 // Good
 try {
-  await fetchData();
+  await fetchData()
 } catch (error) {
-  console.error('fetchData failed:', error);
+  console.error('fetchData failed:', error)
 }
 ```
 
@@ -48,7 +54,7 @@ try {
 - Use `error.message` for display — never expose stack traces to users.
 
 ```tsx
-if (isError) return <Alert severity="error">{error.message}</Alert>;
+if (isError) return <Alert severity="error">{error.message}</Alert>
 ```
 
 ## MobX Store Errors
@@ -58,18 +64,18 @@ if (isError) return <Alert severity="error">{error.message}</Alert>;
 
 ```ts
 class DataStore {
-  @observable error: string | null = null;
-  @observable isLoading = false;
+  @observable error: string | null = null
+  @observable isLoading = false
 
   @action async fetchData() {
-    this.isLoading = true;
-    this.error = null;
+    this.isLoading = true
+    this.error = null
     try {
       // ...
     } catch (e) {
-      this.error = e instanceof Error ? e.message : 'Unknown error';
+      this.error = e instanceof Error ? e.message : 'Unknown error'
     } finally {
-      this.isLoading = false;
+      this.isLoading = false
     }
   }
 }

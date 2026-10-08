@@ -15,11 +15,11 @@ export default function AppProviders({
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ChakraProvider value={defaultSystem}>
-        <ColorModeProvider>
+      <ColorModeProvider>
+        <ChakraProvider value={defaultSystem}>
           <RootStoreProvider>{children}</RootStoreProvider>
-        </ColorModeProvider>
-      </ChakraProvider>
+        </ChakraProvider>
+      </ColorModeProvider>
     </QueryClientProvider>
   )
 }
