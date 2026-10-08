@@ -1,130 +1,138 @@
-# Next.js + MUI + MobX Template
+# Next.js + Chakra UI + MobX Template
 
-A production-ready Next.js 16 starter template with Material UI v7, MobX 6, and TanStack React Query v5. Built with TypeScript, App Router, and a complete DX toolchain.
+A production-ready Next.js 16 starter template with **Chakra UI v3**, **MobX 6**, and **TanStack React Query v5**. Built with TypeScript, App Router, `next-themes` color mode, and a complete developer experience (DX) toolchain.
 
 ## Tech Stack
 
-| Layer            | Technology                            | Version |
-| ---------------- | ------------------------------------- | ------- |
-| Framework        | Next.js (App Router, Turbopack)       | 16.1.2  |
-| Language         | TypeScript                            | 5       |
-| UI Library       | Material UI                           | v7      |
-| State Management | MobX + mobx-react-lite                | 6       |
-| Data Fetching    | TanStack React Query                  | v5      |
-| Font             | Outfit (Google Fonts via `next/font`) | —       |
-| Linting          | ESLint 9 (Flat Config)                | 9       |
-| Formatting       | Prettier                              | 3       |
-| Git Hooks        | Husky + lint-staged                   | —       |
-| SEO              | next-sitemap                          | 4       |
+| Layer            | Technology                              | Version |
+| ---------------- | --------------------------------------- | ------- |
+| Framework        | Next.js (App Router, Turbopack)         | 16.4.0  |
+| Core Library     | React & React DOM                       | 19.3.0  |
+| Language         | TypeScript                              | 5       |
+| UI Library       | Chakra UI v3 (`@chakra-ui/react`)       | 3.37.0  |
+| Styling Engine   | Emotion (`@emotion/react`)              | 11.14.0 |
+| Icons            | React Icons (`react-icons`)             | 5.7.0   |
+| Color Mode       | `next-themes`                           | 0.4.6   |
+| State Management | MobX + `mobx-react` + `mobx-react-lite` | 6.15.0  |
+| Data Fetching    | TanStack React Query                    | 5.104.1 |
+| Font             | Outfit (Google Fonts via `next/font`)   | —       |
+| Linting          | ESLint 9 (Flat Config)                  | 9       |
+| Formatting       | Prettier                                | 3.8.0   |
+| Git Hooks        | Husky + lint-staged                     | 9 / 16  |
+| SEO              | next-sitemap                            | 4.2.3   |
 
 ## Features
 
-- **Light / Dark / System theme** — MUI `colorSchemes` with `InitColorSchemeScript` (no flash on reload)
-- **CSS Variables** — MUI theme tokens exposed as CSS vars, `colorSchemeSelector: 'class'`
-- **No vendor prefixing** — `AppRouterCacheProvider` configured with `stylisPlugins: []` and `enableCssLayer: true`
-- **MobX with decorators** — `@observable`, `@action` via `experimentalDecorators: true`
-- **SSR-safe hydration** — MobX store hydration + React Query client initialized per-request
-- **Custom layout tokens** — `theme.layout` with responsive `screenPadding` and `gridGap` via CSS variables
-- **Responsive typography** — All type variants scale between mobile and desktop breakpoints
+- **Chakra UI v3** — Next-generation accessible UI components powered by `@chakra-ui/react` and `@emotion/react`, with package imports optimized in `next.config.ts`.
+- **Light / Dark Mode** — SSR-safe color mode switching via `next-themes` with zero hydration flash and customizable `ColorModeButton`.
+- **MobX 6 State Management** — SSR-safe store hydration, singleton management on the client, and per-request store instantiation on SSR/SSG. Supports decorators (`@observable`, `@action`).
+- **TanStack React Query v5** — Powerful server state caching and data fetching with React Query Devtools integration.
+- **Next.js 16 App Router** — Clean folder structure, root layout, and route handling.
+- **SEO & OpenGraph Ready** — Preconfigured metadata tags, Google Fonts (`Outfit`), and automatic sitemap generation via `next-sitemap` with GMT+7 timestamps.
+- **Strict DX Toolchain** — ESLint 9 Flat Config, Prettier code formatting, TypeScript type checking, and Husky pre-commit hooks.
 
 ## Project Structure
 
 ```
 src/
 ├── app/
-│   ├── layout.tsx          # Root layout (Outfit font, metadata, AppProviders)
-│   ├── page.tsx            # Home page
-│   └── about/
-│       └── page.tsx        # About page
+│   ├── demo/
+│   │   └── page.tsx            # Demo page (Chakra UI components, color mode, MobX, RTL toggle)
+│   ├── favicon.ico
+│   ├── globals.css             # Global CSS
+│   ├── layout.tsx              # Root layout (Outfit font, SEO metadata, AppProviders)
+│   └── page.tsx                # Home page
 ├── components/
-│   ├── ModeToggle.tsx      # Light / Dark / System theme switcher
-│   ├── Link.tsx            # MUI + Next.js Link wrapper
-│   ├── Copyright.tsx       # Footer copyright
-│   └── ProTip.tsx          # Example component
+│   ├── ui/
+│   │   └── color-mode.tsx      # ColorModeProvider, useColorMode, ColorModeButton
+│   ├── Copyright.tsx           # Footer copyright component
+│   ├── Link.tsx                # Next.js Link wrapper
+│   └── ProTip.tsx              # Tip component with Chakra UI Link & React Icons
 ├── contains/
-│   └── enums.ts            # Shared enums (STATE, etc.)
+│   └── enums.ts                # Shared enums (STATE, etc.)
 ├── providers/
-│   ├── AppProviders.tsx    # Root provider tree
-│   └── RootStoreProvider.tsx
-├── stores/
-│   ├── RootStore.ts        # MobX store entry point
-│   └── global.store.ts     # GlobalStore (banners, state)
-└── theme/
-    └── theme.ts            # MUI theme (palettes, typography, breakpoints, layout)
+│   ├── AppProviders.tsx        # Composed root provider tree
+│   └── RootStoreProvider.tsx   # MobX store provider with SSR hydration support
+└── stores/
+    ├── RootStore.ts            # MobX RootStore entry point
+    └── global.store.ts         # GlobalStore (banners, app states)
 ```
 
-## Provider Tree
+## Provider Architecture
+
+Providers are cleanly composed in `src/providers/AppProviders.tsx` to ensure proper context nesting and SSR hydration:
 
 ```
-QueryClientProvider
-└── InitColorSchemeScript         ← prevents dark/light flash
-└── AppRouterCacheProvider        ← MUI SSR cache (no vendor prefixes)
-    └── ThemeProvider
-        └── CssBaseline
-            └── RootStoreProvider ← MobX
+QueryClientProvider (TanStack React Query)
+└── ColorModeProvider (next-themes ThemeProvider)
+    └── ChakraProvider (Chakra UI v3 defaultSystem)
+        └── RootStoreProvider (MobX)
+            └── {children}
 ```
 
-## Theme
-
-Custom breakpoints (matches common device widths):
-
-| Token | Value  |
-| ----- | ------ |
-| `xs`  | 0px    |
-| `sm`  | 576px  |
-| `md`  | 768px  |
-| `lg`  | 992px  |
-| `xl`  | 1200px |
-
-Custom layout tokens (responsive via CSS vars):
-
-| Token                | Mobile | Desktop (≥768px) |
-| -------------------- | ------ | ---------------- |
-| `--screen-padding`   | 16px   | 160px            |
-| `--grid-gap-tight`   | 8px    | 20px             |
-| `--grid-gap-default` | 16px   | 40px             |
-| `--grid-gap-loose`   | 24px   | 80px             |
+> **Note on Hydration:** Placing `ColorModeProvider` outside `ChakraProvider` ensures that Emotion's server-rendered CSS tags and `next-themes`'s anti-flicker script tags hydrate cleanly without React 19 hydration mismatches.
 
 ## Getting Started
 
+### Prerequisites
+
+- Node.js 18+ or 20+
+- Yarn (v1.22+)
+
+### Installation
+
 ```bash
+# Clone the repository
+git clone https://github.com/PKLoggerVN/nextjs-using-chakra-ui-template.git
+
+# Navigate to project directory
+cd nextjs-using-chakra-ui-template
+
 # Install dependencies
 yarn install
+```
 
-# Run development server (Turbopack)
+### Running Locally
+
+```bash
+# Start development server
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000) with your browser. Navigate to `/demo` to see Chakra UI and MobX in action.
 
-## Scripts
+## Available Scripts
 
-```bash
-yarn dev          # Dev server with Turbopack
-yarn build        # Production build (+ next-sitemap postbuild)
-yarn start        # Serve production build
-yarn lint         # ESLint check
-yarn format       # Prettier format
-yarn type-check   # TypeScript check (no emit)
-```
+| Script            | Description                                           |
+| ----------------- | ----------------------------------------------------- |
+| `yarn dev`        | Starts the Next.js development server                 |
+| `yarn build`      | Creates an optimized production build + sitemaps      |
+| `yarn start`      | Starts the production server                          |
+| `yarn lint`       | Runs ESLint to check for code quality issues          |
+| `yarn format`     | Formats code with Prettier                            |
+| `yarn type-check` | Runs TypeScript compiler to verify types without emit |
 
 ## Git Hooks (Husky)
+
+Automated checks are configured with Husky and `lint-staged`:
 
 | Hook         | Action                                                             |
 | ------------ | ------------------------------------------------------------------ |
 | `pre-commit` | `lint-staged` → `yarn lint` + `yarn format` on staged `*.ts/*.tsx` |
 | `pre-push`   | `yarn type-check`                                                  |
 
-## Adding a New MobX Store
+## Working with MobX
 
-1. Create `src/stores/your.store.ts`:
+### 1. Adding a New Store
+
+Create `src/stores/myFeature.store.ts`:
 
 ```ts
 import { action, observable, makeObservable } from 'mobx'
 import RootStore from './RootStore'
 
-export default class YourStore {
-  @observable data: string[] = []
+export default class MyFeatureStore {
+  @observable items: string[] = []
   @observable root: RootStore
 
   constructor(root: RootStore) {
@@ -132,23 +140,82 @@ export default class YourStore {
     makeObservable(this)
   }
 
-  @action setData(data: string[]) {
-    this.data = data
+  @action addItem(item: string) {
+    this.items.push(item)
   }
 }
 ```
 
-2. Register it in `src/stores/RootStore.ts`.
-3. Access via `useRootStore()` hook from `RootStoreProvider`.
+### 2. Registering in `RootStore`
 
-## Using the Theme Color Scheme Toggle
+Update `src/stores/RootStore.ts`:
 
-```tsx
-import { useColorScheme } from '@mui/material/styles'
+```ts
+import MyFeatureStore from './myFeature.store'
 
-const { mode, setMode } = useColorScheme()
-// mode: 'light' | 'dark' | 'system'
-setMode('dark')
+export default class RootStore {
+  myFeatureStore: MyFeatureStore
+
+  constructor() {
+    this.myFeatureStore = new MyFeatureStore(this)
+    // ...
+  }
+}
 ```
 
-See `src/components/ModeToggle.tsx` for a full implementation example.
+### 3. Consuming in Components
+
+You can consume the store via React hook or MobX `inject`/`observer`:
+
+```tsx
+'use client'
+
+import { useRootStore } from '@/providers/RootStoreProvider'
+import { observer } from 'mobx-react-lite'
+
+const MyComponent = observer(() => {
+  const { globalStore } = useRootStore()
+
+  return <div>State: {globalStore.state}</div>
+})
+
+export default MyComponent
+```
+
+Or using `inject`:
+
+```tsx
+import { inject, observer } from 'mobx-react'
+import RootStore from '@/stores/RootStore'
+
+const MyComponent = inject(({ store }: { store: RootStore }) => ({
+  globalStore: store.globalStore,
+}))(
+  observer(({ globalStore }) => {
+    return <div>State: {globalStore?.state}</div>
+  })
+)
+```
+
+## Using Chakra UI Color Mode
+
+Toggle color mode in any component:
+
+```tsx
+import { ColorModeButton, useColorMode } from '@/components/ui/color-mode'
+
+export function Header() {
+  const { colorMode, toggleColorMode } = useColorMode()
+
+  return (
+    <div>
+      <ColorModeButton />
+      <button onClick={toggleColorMode}>Current: {colorMode}</button>
+    </div>
+  )
+}
+```
+
+## License
+
+This project is licensed under the MIT License.
