@@ -7,25 +7,18 @@ import AppProviders from '@/providers/AppProviders'
 const outfit = Outfit({ variable: '--font-outfit', subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'CyberSecure Community - Learn, Defend, Build',
+  title: 'Chakra UI - Next.js example in TypeScript',
   description:
-    'Join the CyberSecure Community to master cybersecurity. Learn defensive strategies, build secure systems, and connect with experts.',
-  keywords: [
-    'cybersecurity',
-    'security',
-    'defense',
-    'community',
-    'learning',
-    'infosec',
-  ],
-  authors: [{ name: 'CyberSecure Team' }],
+    'This is an example of how to use Chakra UI with Next.js. It is a simple example of how to use Chakra UI with Next.js.',
+  keywords: ['chakra-ui', 'nextjs', 'typescript', 'ui', 'learning', 'infosec'],
+  authors: [{ name: 'Author' }],
   metadataBase: new URL('https://example.com'), // TODO: Replace with actual domain
   openGraph: {
-    title: 'CyberSecure Community',
+    title: 'Chakra UI - Next.js example in TypeScript',
     description:
-      'An open cybersecurity community to learn, defend, and build together.',
+      'This is an example of how to use Chakra UI with Next.js. It is a simple example of how to use Chakra UI with Next.js.',
     url: 'https://example.com',
-    siteName: 'CyberSecure Community',
+    siteName: 'Chakra UI - Next.js example in TypeScript',
     images: [
       {
         url: '/og-image.png', // Ensure this image exists or plan to add it
@@ -38,9 +31,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CyberSecure Community',
+    title: 'Chakra UI - Next.js example in TypeScript',
     description:
-      'An open cybersecurity community to learn, defend, and build together.',
+      'This is an example of how to use Chakra UI with Next.js. It is a simple example of how to use Chakra UI with Next.js.',
     images: ['/og-image.png'],
   },
 }
